@@ -8,8 +8,12 @@ const routes: Routes = [
     component: TabsPage,
     children: [
       {
-        path: 'tab1',
-        loadChildren: () => import('../tab1/tab1.module').then(m => m.Tab1PageModule)
+        path: 'main-menu',
+        loadChildren: () => import('../main-menu/main-menu.module').then(m => m.MainMenuPageModule)
+      },
+      {
+        path: 'tv',
+        loadChildren: () => import('../tv/tv.module').then(m => m.TvPageModule)
       },
       {
         path: 'tab2',
@@ -21,14 +25,14 @@ const routes: Routes = [
       },
       {
         path: '',
-        redirectTo: '/tabs/tab1',
+        redirectTo: '/tabs/main-menu',
         pathMatch: 'full'
       }
     ]
   },
   {
     path: '',
-    redirectTo: '/tabs/tab1',
+    redirectTo: '/tabs/main-menu',
     pathMatch: 'full'
   }
 ];
@@ -37,4 +41,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class TabsPageRoutingModule {}
+export class TabsPageRoutingModule { }

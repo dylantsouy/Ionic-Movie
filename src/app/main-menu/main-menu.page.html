@@ -1,0 +1,18 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Movie</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col *ngFor="let item of menu" size="4">
+        <div class="menu-item" routerLink="/generes" [state]="{data: {title:item.title,id:item.id}}">
+          <img src={{item.icon}} alt="item.title">
+          <p>{{item.title}}</p>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

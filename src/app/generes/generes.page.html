@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{title}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list *ngFor="let item of apiData">
+    <ion-item>
+      <ion-thumbnail slot="start">
+        <ion-img src="https://image.tmdb.org/t/p/w500/{{item.backdrop_path ? item.backdrop_path : item.poster_path}}">
+        </ion-img>
+      </ion-thumbnail>
+      <ion-label>
+        <h2>{{item.original_title ? item.original_title : item.original_name}}</h2>
+        <p>{{item.overview}}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
+  <ion-infinite-scroll threshold="25%" (ionInfinite)="loadMore($event)">
+    <ion-infinite-scroll-content loadingSpinner="circular" loadingText="Loading...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>
