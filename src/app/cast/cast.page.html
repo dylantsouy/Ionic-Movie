@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{data ? data.name : '卡司詳細'}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content *ngIf="apiData">
+  <ion-img src="https://image.tmdb.org/t/p/w500/{{data.profile_path ? data.profile_path : ''}}">
+  </ion-img>
+  <ion-card style="padding-bottom: 15px;">
+
+    <ion-card-header>
+      <ion-card-title>{{apiData.name}}</ion-card-title>
+      <ion-card-subtitle style="margin-top: 5px;">{{ apiData.birthday }}</ion-card-subtitle>
+      <ion-card-subtitle style="margin-top: 5px;">Known For {{ apiData.known_for_department }}</ion-card-subtitle>
+    </ion-card-header>
+
+    <ion-card-content>
+      <ion-list>
+        <h1>Movies</h1>
+        <div class="nodata" *ngIf="movieData && !movieData.length">
+          <ion-img src="../../assets/empty.png"></ion-img>
+          <p>No Data</p>
+        </div>
+        <ion-item *ngFor="let item of movieData">
+          <ion-thumbnail slot="start">
+            <ion-img
+              src="https://image.tmdb.org/t/p/w500/{{item.backdrop_path ? item.backdrop_path : item.poster_path}}">
+            </ion-img>
+          </ion-thumbnail>
+          <ion-label>
+            <h5>{{item.title ? item.title : item.name}}</h5>
+            <p>{{item.character}}</p>
+          </ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

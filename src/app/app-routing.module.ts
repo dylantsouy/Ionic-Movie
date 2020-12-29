@@ -18,6 +18,22 @@ const routes: Routes = [
     path: 'tv',
     loadChildren: () => import('./tv/tv.module').then( m => m.TvPageModule)
   },
+  {
+    path: 'movie',
+    loadChildren: () => import('./movie/movie.module').then( m => m.MoviePageModule)
+  },
+  {
+    path: 'detail',
+    loadChildren: () => import('./detail/detail.module').then( m => m.DetailPageModule)
+  },
+  {
+    path: 'cast',
+    loadChildren: () => import('./cast/cast.module').then( m => m.CastPageModule)
+  },
+  {
+    path: 'trending',
+    loadChildren: () => import('./trending/trending.module').then( m => m.TrendingPageModule)
+  },
 ];
 @NgModule({
   imports: [

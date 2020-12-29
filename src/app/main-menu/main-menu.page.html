@@ -1,17 +1,115 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Movie</ion-title>
+    <ion-title>Main</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
   <ion-grid>
     <ion-row>
-      <ion-col *ngFor="let item of menu" size="4">
-        <div class="menu-item" routerLink="/generes" [state]="{data: {title:item.title,id:item.id}}">
-          <img src={{item.icon}} alt="item.title">
-          <p>{{item.title}}</p>
-        </div>
+      <ion-col size="12">
+        <ion-card routerLink="/trending" [state]="{data: {type:'hotmovie'}}">
+          <ion-card-header>
+            <ion-card-title>
+              Hot Movies
+            </ion-card-title>
+            <ion-card-subtitle>Find Hot Movies Here</ion-card-subtitle>
+          </ion-card-header>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="12">
+        <ion-card routerLink="/trending" [state]="{data: {type:'hottv'}}">
+          <ion-card-header>
+            <ion-card-title>
+              Hot TV Shows
+            </ion-card-title>
+            <ion-card-subtitle>Find Hot TV Shows Here</ion-card-subtitle>
+          </ion-card-header>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="6">
+        <ion-card routerLink="/trending" [state]="{data: {type:'upcomingmovie'}}">
+          <ion-card-header>
+            <ion-card-title>
+              Upcoming
+            </ion-card-title>
+            <ion-card-subtitle>Movies</ion-card-subtitle>
+          </ion-card-header>
+        </ion-card>
+      </ion-col>
+      <ion-col size="6">
+        <ion-card routerLink="/trending" [state]="{data: {type:'upcomingtv'}}">
+          <ion-card-header>
+            <ion-card-title>
+              Upcoming
+            </ion-card-title>
+            <ion-card-subtitle>TV Shows</ion-card-subtitle>
+          </ion-card-header>
+        </ion-card>
+      </ion-col>
+      <ion-col size="6">
+        <ion-card routerLink="/trending" [state]="{data: {type:'popularmovie'}}">
+          <ion-card-header>
+            <ion-card-title>
+              Popular
+            </ion-card-title>
+            <ion-card-subtitle>Movies</ion-card-subtitle>
+          </ion-card-header>
+        </ion-card>
+      </ion-col>
+      <ion-col size="6">
+        <ion-card routerLink="/trending" [state]="{data: {type:'populartv'}}">
+          <ion-card-header>
+            <ion-card-title>
+              Popular
+            </ion-card-title>
+            <ion-card-subtitle>TV Shows</ion-card-subtitle>
+          </ion-card-header>
+        </ion-card>
+      </ion-col>
+      <ion-col size="6">
+        <ion-card routerLink="/trending" [state]="{data: {type:'topratemovie'}}">
+          <ion-card-header>
+            <ion-card-title>
+              Top Rate
+            </ion-card-title>
+            <ion-card-subtitle>Movies</ion-card-subtitle>
+          </ion-card-header>
+        </ion-card>
+      </ion-col>
+      <ion-col size="6">
+        <ion-card routerLink="/trending" [state]="{data: {type:'topratetv'}}">
+          <ion-card-header>
+            <ion-card-title>
+              Top Rate
+            </ion-card-title>
+            <ion-card-subtitle>TV Shows</ion-card-subtitle>
+          </ion-card-header>
+        </ion-card>
+      </ion-col>
+      <ion-col size="6">
+        <ion-card routerLink="/trending" [state]="{data: {type:'nowplayingmovie'}}">
+          <ion-card-header>
+            <ion-card-title>
+              Now Playing
+            </ion-card-title>
+            <ion-card-subtitle>Movies</ion-card-subtitle>
+          </ion-card-header>
+        </ion-card>
+      </ion-col>
+      <ion-col size="6">
+        <ion-card routerLink="/trending" [state]="{data: {type:'nowplayingtv'}}">
+          <ion-card-header>
+            <ion-card-title>
+              Now Playing
+            </ion-card-title>
+            <ion-card-subtitle>TV Shows</ion-card-subtitle>
+          </ion-card-header>
+        </ion-card>
       </ion-col>
     </ion-row>
   </ion-grid>

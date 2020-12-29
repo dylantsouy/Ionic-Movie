@@ -1,0 +1,91 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title>電影詳細</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content *ngIf="data">
+  <ion-img src="https://image.tmdb.org/t/p/w500/{{data.backdrop_path ? data.backdrop_path : data.poster_path}}">
+  </ion-img>
+  <ion-card style="padding-bottom: 15px;">
+
+    <ion-card-header>
+      <ion-card-title>{{data.title ? data.title : data.name}}</ion-card-title>
+      <ion-card-subtitle style="margin-top: 5px;">{{ data.release_date }}</ion-card-subtitle>
+      <ion-item>
+        <ion-label style="margin-left: 0;">
+          <p>
+            <ion-icon *ngIf="data.vote_average > 1" name="star" style="color:orangered"></ion-icon>
+            <ion-icon *ngIf="data.vote_average > 2" name="star" style="color:orangered"></ion-icon>
+            <ion-icon *ngIf="data.vote_average > 3" name="star" style="color:orangered"></ion-icon>
+            <ion-icon *ngIf="data.vote_average > 4" name="star" style="color:orangered"></ion-icon>
+            <ion-icon *ngIf="data.vote_average > 5" name="star" style="color:orangered"></ion-icon>
+            <ion-icon *ngIf="data.vote_average > 6" name="star" style="color:orangered"></ion-icon>
+            <ion-icon *ngIf="data.vote_average > 7" name="star" style="color:orangered"></ion-icon>
+            <ion-icon *ngIf="data.vote_average > 8" name="star" style="color:orangered"></ion-icon>
+            <ion-icon *ngIf="data.vote_average > 9" name="star" style="color:orangered"></ion-icon>
+            <ion-icon *ngIf="data.vote_average > 10" name="star" style="color:orangered"></ion-icon>
+            <ion-icon *ngIf="data.vote_average < 1" name="star-outline"></ion-icon>
+            <ion-icon *ngIf="data.vote_average < 2" name="star-outline"></ion-icon>
+            <ion-icon *ngIf="data.vote_average < 3" name="star-outline"></ion-icon>
+            <ion-icon *ngIf="data.vote_average < 4" name="star-outline"></ion-icon>
+            <ion-icon *ngIf="data.vote_average < 5" name="star-outline"></ion-icon>
+            <ion-icon *ngIf="data.vote_average < 6" name="star-outline"></ion-icon>
+            <ion-icon *ngIf="data.vote_average < 7" name="star-outline"></ion-icon>
+            <ion-icon *ngIf="data.vote_average < 8" name="star-outline"></ion-icon>
+            <ion-icon *ngIf="data.vote_average < 9" name="star-outline"></ion-icon>
+            <ion-icon *ngIf="data.vote_average < 10" name="star-outline"></ion-icon>
+          </p>
+          <p>Vote Count: {{ data.vote_count }}</p>
+        </ion-label>
+
+      </ion-item>
+    </ion-card-header>
+
+    <ion-card-content class="overview">
+      {{ data.overview }}
+    </ion-card-content>
+    <ion-card-content>
+      <ion-list>
+        <h1>Casts</h1>
+        <div class="nodata" *ngIf="cast && !cast.length">
+          <ion-img src="../../assets/empty.png"></ion-img>
+          <p>No Data</p>
+        </div>
+        <ion-item *ngFor="let item of cast" routerLink="/cast" [state]="{data: item}">
+          <ion-thumbnail slot="start">
+            <ion-img src="https://image.tmdb.org/t/p/w500/{{item.profile_path ? item.profile_path : ''}}"></ion-img>
+          </ion-thumbnail>
+          <ion-label>
+            <h5>{{item.character}}</h5>
+            <p>{{item.name}}</p>
+          </ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+    <ion-card-content>
+      <ion-list>
+        <h1>Reviews</h1>
+        <div class="nodata" *ngIf="review && !review.length">
+          <ion-img src="../../assets/empty.png"></ion-img>
+          <p>No Data</p>
+        </div>
+        <a *ngFor="let item of review" [href]="item.url" target="_blank">
+          <ion-item>
+            <ion-thumbnail slot="start">
+              <ion-img src="../../assets/profile.png"></ion-img>
+            </ion-thumbnail>
+            <ion-label>
+              <h5>{{item.author}}</h5>
+              <p>{{item.content}}</p>
+            </ion-label>
+          </ion-item>
+        </a>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>

@@ -7,9 +7,9 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content *ngIf="apiData">
   <ion-list *ngFor="let item of apiData">
-    <ion-item>
+    <ion-item routerLink="/detail" [state]="{data: item}">
       <ion-thumbnail slot="start">
         <ion-img src="https://image.tmdb.org/t/p/w500/{{item.backdrop_path ? item.backdrop_path : item.poster_path}}">
         </ion-img>

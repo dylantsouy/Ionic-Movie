@@ -1,0 +1,28 @@
+.overview {
+    max-height: 95px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 5;
+    -webkit-box-orient: vertical;
+    font-size: 12px;
+}
+.nodata {
+    margin-top: 20px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    ion-img {
+        width: 75px;
+        height: 75px;
+    }
+    p{
+        color: #aaa;
+    }
+}
+
+ion-label{
+    margin-left: 10px;
+}

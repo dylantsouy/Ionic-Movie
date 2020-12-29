@@ -20,7 +20,6 @@ export class GeneresPage implements OnInit {
   ) { }
 
   async ngOnInit() {
-
     let loading = await this.loadingController.create({
       message: "loafing...",
       spinner: 'crescent',
@@ -31,15 +30,17 @@ export class GeneresPage implements OnInit {
       this.location.back();
       return
     }
+    
     this.title = history.state.data.title;
-    await setTimeout(() => {
-      this.getByGenres()
-    }, 0);
+    if (history.state.data.type === 'movie') {
+      this.getByGeneres()
+    } else {
+      this.getByGeneresTv()
+    }
   }
-  getByGenres(event?: any) {
+  getByGeneres(event?: any) {
     const id = history.state.data.id
     this.getService.getByGeneres(id, this.page).subscribe(res => {
-      console.log(res.body);
       this.total_pages = res.body.total_pages
       this.apiData = this.apiData.concat(res.body.results)
       if (event) {
@@ -48,9 +49,23 @@ export class GeneresPage implements OnInit {
     })
   }
 
+  getByGeneresTv(event?: any) {
+    const id = history.state.data.id
+    this.getService.getByGeneresTv(id, this.page).subscribe(res => {
+      this.total_pages = res.body.total_pages
+      this.apiData = this.apiData.concat(res.body.results)
+      if (event) {
+        event.target.complete();
+      }
+    })
+  }
   loadMore(event: any) {
     this.page++;
-    this.getByGenres(event);
+    if (history.state.data.type === 'movie') {
+      this.getByGeneres(event)
+    } else {
+      this.getByGeneresTv(event)
+    }
     if (this.page === this.total_pages) {
       event.target.disabled = false;
     }

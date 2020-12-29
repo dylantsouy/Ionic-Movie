@@ -5,5 +5,14 @@
 </ion-header>
 
 <ion-content>
-
+  <ion-grid>
+    <ion-row>
+      <ion-col *ngFor="let item of menu" size="4">
+        <ion-card class="menu-item" routerLink="/generes" [state]="{data: {title:item.title,id:item.id,type:'tv'}}">
+          <img src={{item.icon}} alt="item.title">
+          <p>{{item.title}}</p>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>
