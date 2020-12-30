@@ -9,10 +9,11 @@
 
 <ion-content *ngIf="apiData">
   <ion-list *ngFor="let item of apiData">
-    <ion-item routerLink="/detail" [state]="{data: item}">
+    <ion-item routerLink="/detail" [state]="{data: {item:item,type:type}}">
       <ion-thumbnail slot="start">
-        <ion-img src="https://image.tmdb.org/t/p/w500/{{item.backdrop_path ? item.backdrop_path : item.poster_path}}">
+        <ion-img *ngIf="item.poster_path || item.backdrop_path" src="https://image.tmdb.org/t/p/w500/{{item.backdrop_path ? item.backdrop_path : item.poster_path}}">
         </ion-img>
+        <ion-img *ngIf="!item.poster_path && !item.backdrop_path" src="../../assets/404.png"></ion-img>
       </ion-thumbnail>
       <ion-label>
         <h2>{{item.original_title ? item.original_title : item.original_name}}</h2>

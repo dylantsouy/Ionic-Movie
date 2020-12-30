@@ -34,6 +34,14 @@ const routes: Routes = [
     path: 'trending',
     loadChildren: () => import('./trending/trending.module').then( m => m.TrendingPageModule)
   },
+  {
+    path: 'search',
+    loadChildren: () => import('./search/search.module').then( m => m.SearchPageModule)
+  },
+  {
+    path: 'result',
+    loadChildren: () => import('./result/result.module').then( m => m.ResultPageModule)
+  },
 ];
 @NgModule({
   imports: [

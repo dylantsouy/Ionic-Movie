@@ -29,9 +29,14 @@ export class DetailPage implements OnInit {
       this.location.back()
       return
     }
-    this.data = history.state.data
-    this.getCast()
-    this.getReview()
+    this.data = history.state.data.item
+    if (history.state.data.type === 'movie') {
+      this.getCast()
+      this.getReview()
+    } else {
+      this.getCastTv()
+      this.getReviewTv()
+    }
   }
 
   getCast() {
@@ -44,4 +49,16 @@ export class DetailPage implements OnInit {
       this.review = res.body.results.slice(0, 5)
     })
   }
+
+  getCastTv() {
+    this.getService.getCastTv(this.data.id).subscribe(res => {
+      this.cast = res.body.cast.filter(e => e.profile_path).slice(0, 5)
+    })
+  }
+  getReviewTv() {
+    this.getService.getReviewTv(this.data.id).subscribe(res => {
+      this.review = res.body.results.slice(0, 5)
+    })
+  }
+  
 }

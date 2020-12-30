@@ -23,7 +23,7 @@
         <h1>Movies</h1>
         <div class="nodata" *ngIf="movieData && !movieData.length">
           <ion-img src="../../assets/empty.png"></ion-img>
-          <p>No Data</p>
+          <p>查無資料</p>
         </div>
         <ion-item *ngFor="let item of movieData">
           <ion-thumbnail slot="start">

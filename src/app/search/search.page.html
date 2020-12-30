@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>搜尋</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-searchbar animated [(ngModel)]="searchName"></ion-searchbar>
+
+  <ion-item button (click)="showTypePicker()">
+    <ion-label>
+      類型:
+    </ion-label>
+    {{typeText}}
+  </ion-item>
+  <ion-item button (click)="showPicker()">
+    <ion-label>
+      分類:
+    </ion-label>
+    {{generesText}}
+  </ion-item>
+  <ion-item button (click)="showYearPicker()">
+    <ion-label>
+      年份:
+    </ion-label>
+    {{yearText}}
+  </ion-item>
+  <ion-item button (click)="showSortPicker()">
+    <ion-label>
+      排序:
+    </ion-label>
+    {{sortText}}
+  </ion-item>
+  <ion-button expand="block" (click)="search()" style="margin-top: 30px;">搜尋</ion-button>
+</ion-content>

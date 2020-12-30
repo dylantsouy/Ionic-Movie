@@ -8,7 +8,10 @@
 </ion-header>
 
 <ion-content *ngIf="data">
-  <ion-img src="https://image.tmdb.org/t/p/w500/{{data.backdrop_path ? data.backdrop_path : data.poster_path}}">
+  <ion-img *ngIf="data.backdrop_path || data.poster_path" src="https://image.tmdb.org/t/p/w500/{{data.backdrop_path ? data.backdrop_path : data.poster_path}}">
+  </ion-img>
+  
+  <ion-img *ngIf="!data.backdrop_path && !data.poster_path" src="../../assets/giphy.gif">
   </ion-img>
   <ion-card style="padding-bottom: 15px;">
 
@@ -53,7 +56,7 @@
         <h1>Casts</h1>
         <div class="nodata" *ngIf="cast && !cast.length">
           <ion-img src="../../assets/empty.png"></ion-img>
-          <p>No Data</p>
+          <p>查無資料</p>
         </div>
         <ion-item *ngFor="let item of cast" routerLink="/cast" [state]="{data: item}">
           <ion-thumbnail slot="start">
@@ -71,7 +74,7 @@
         <h1>Reviews</h1>
         <div class="nodata" *ngIf="review && !review.length">
           <ion-img src="../../assets/empty.png"></ion-img>
-          <p>No Data</p>
+          <p>查無資料</p>
         </div>
         <a *ngFor="let item of review" [href]="item.url" target="_blank">
           <ion-item>

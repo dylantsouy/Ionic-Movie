@@ -20,6 +20,10 @@ const routes: Routes = [
         loadChildren: () => import('../tv/tv.module').then(m => m.TvPageModule)
       },
       {
+        path: 'search',
+        loadChildren: () => import('../search/search.module').then(m => m.SearchPageModule)
+      },
+      {
         path: '',
         redirectTo: '/tabs/main-menu',
         pathMatch: 'full'

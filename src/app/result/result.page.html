@@ -3,16 +3,22 @@
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/"></ion-back-button>
     </ion-buttons>
-    <ion-title>{{title}}</ion-title>
+    <ion-title>搜尋結果</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content *ngIf="apiData">
+  <div class="nodata" *ngIf="!apiData.length && !loading">
+    <ion-img src="../../assets/empty.png"></ion-img>
+    <p>查無資料</p>
+  </div>
   <ion-list *ngFor="let item of apiData">
     <ion-item routerLink="/detail" [state]="{data: {item:item,type:type}}">
       <ion-thumbnail slot="start">
-        <ion-img src="https://image.tmdb.org/t/p/w500/{{item.backdrop_path ? item.backdrop_path : item.poster_path}}">
+        <ion-img *ngIf="item.poster_path || item.backdrop_path"
+          src="https://image.tmdb.org/t/p/w500/{{item.backdrop_path ? item.backdrop_path : item.poster_path}}">
         </ion-img>
+        <ion-img *ngIf="!item.poster_path && !item.backdrop_path" src="../../assets/404.png"></ion-img>
       </ion-thumbnail>
       <ion-label>
         <h2>{{item.original_title ? item.original_title : item.original_name}}</h2>

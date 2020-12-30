@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Movie</ion-title>
+    <ion-title>電影分類</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -8,10 +8,11 @@
   <ion-grid>
     <ion-row>
       <ion-col *ngFor="let item of menu" size="4">
-        <ion-card class="menu-item" routerLink="/generes" [state]="{data: {title:item.title,id:item.id,type:'movie'}}">
-          <img src={{item.icon}} alt="item.title">
-          <p>{{item.title}}</p>
-        </ion-card>
+        <div class="menu-item" routerLink="/generes" [state]="{data: {title:item.title,id:item.id,type:'movie'}}">
+          <img src={{item.icon}} alt="item.title" />
+          <div class="chinese">{{transform(item.title)}}</div>
+          <div class="english">{{item.title}}</div>
+        </div>
       </ion-col>
     </ion-row>
   </ion-grid>
