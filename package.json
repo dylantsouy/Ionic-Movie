@@ -5,15 +5,24 @@
   "homepage": "https://ionicframework.com/",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "node server.js",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "postinstall": "ng build --aot --prod",
+    "heroku-postbuild": "ng build --configuration=production"
   },
   "private": true,
   "dependencies": {
+    "@angular-devkit/build-angular": "^0.1100.5",
+    "@angular/compiler": "~10.0.0",
+    "@angular/compiler-cli": "~10.0.0",
+    "@angular/language-service": "~10.0.0",
+    "@angular/cli": "~10.0.5",
     "@angular/common": "~10.0.0",
+    "@capacitor/cli": "2.4.5",
+    "@ionic/angular-toolkit": "^2.3.0",
     "@angular/core": "~10.0.0",
     "@angular/forms": "~10.0.0",
     "@angular/platform-browser": "~10.0.0",
@@ -22,12 +31,19 @@
     "@capacitor/android": "^2.4.5",
     "@capacitor/core": "2.4.5",
     "@ionic-native/core": "^5.0.0",
+    "@types/node": "^12.11.1",
     "@ionic-native/splash-screen": "^5.0.0",
     "@ionic-native/status-bar": "^5.0.0",
     "@ionic/angular": "^5.0.0",
+    "@ionic/app-scripts": "^3.2.4",
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "morgan": "^1.10.0",
     "rxjs": "~6.5.5",
     "tslib": "^2.0.0",
-    "zone.js": "~0.10.3"
+    "zone.js": "~0.10.3",
+    "typescript": "^3.9.7"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^0.1100.5",
@@ -52,7 +68,7 @@
     "protractor": "~7.0.0",
     "ts-node": "~8.3.0",
     "tslint": "~6.1.0",
-    "typescript": "~3.9.5"
+    "typescript": "^3.9.7"
   },
   "description": "An Ionic project"
 }
