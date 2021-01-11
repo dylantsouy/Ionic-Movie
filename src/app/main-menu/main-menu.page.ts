@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { GetService } from '../../services/get.services';
 
 @Component({
   selector: 'app-main-menu',
@@ -7,7 +6,8 @@ import { GetService } from '../../services/get.services';
   styleUrls: ['./main-menu.page.scss'],
 })
 export class MainMenuPage implements OnInit {
-  constructor(private getService: GetService) { }
+  type ='movie';
+  constructor() { }
 
   ngOnInit() {
     

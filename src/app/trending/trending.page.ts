@@ -44,7 +44,7 @@ export class TrendingPage implements OnInit {
     switch (history.state.data.type) {
       case 'hotMovie':
         this.title = '熱門-電影'
-        this.getService.getHot().subscribe(res => {
+        this.getService.getHot(this.page).subscribe(res => {
           this.total_pages = res.body.total_pages
           this.apiData = this.apiData.concat(res.body.results)
           if (event) {
@@ -54,7 +54,7 @@ export class TrendingPage implements OnInit {
         break;
       case 'hotTv':
         this.title = '熱門-影集'
-        this.getService.getHotTv().subscribe(res => {
+        this.getService.getHotTv(this.page).subscribe(res => {
           this.total_pages = res.body.total_pages
           this.apiData = this.apiData.concat(res.body.results)
           if (event) {
@@ -64,7 +64,7 @@ export class TrendingPage implements OnInit {
         break;
       case 'upcomingMovie':
         this.title = '即將上映-電影'
-        this.getService.getUpcoming().subscribe(res => {
+        this.getService.getUpcoming(this.page).subscribe(res => {
           this.total_pages = res.body.total_pages
           this.apiData = this.apiData.concat(res.body.results)
           if (event) {
@@ -74,7 +74,7 @@ export class TrendingPage implements OnInit {
         break;
       case 'newReleaseTv':
         this.title = '近期更新-影集'
-        this.getService.getNewReleaseTv().subscribe(res => {
+        this.getService.getNewReleaseTv(this.page).subscribe(res => {
           this.total_pages = res.body.total_pages
           this.apiData = this.apiData.concat(res.body.results)
           if (event) {
@@ -84,7 +84,7 @@ export class TrendingPage implements OnInit {
         break;
       case 'nowPlayingMovie':
         this.title = '現正熱播-電影'
-        this.getService.getNowPlaying().subscribe(res => {
+        this.getService.getNowPlaying(this.page).subscribe(res => {
           this.total_pages = res.body.total_pages
           this.apiData = this.apiData.concat(res.body.results)
           if (event) {
@@ -94,7 +94,7 @@ export class TrendingPage implements OnInit {
         break;
       case 'nowPlayingTv':
         this.title = '現正熱播-影集'
-        this.getService.getNowPlayingTv().subscribe(res => {
+        this.getService.getNowPlayingTv(this.page).subscribe(res => {
           this.total_pages = res.body.total_pages
           this.apiData = this.apiData.concat(res.body.results)
           if (event) {
@@ -104,7 +104,7 @@ export class TrendingPage implements OnInit {
         break;
       case 'topRateMovie':
         this.title = '高評價-電影'
-        this.getService.getTopRate().subscribe(res => {
+        this.getService.getTopRate(this.page).subscribe(res => {
           this.total_pages = res.body.total_pages
           this.apiData = this.apiData.concat(res.body.results)
           if (event) {
@@ -114,7 +114,66 @@ export class TrendingPage implements OnInit {
         break;
       case 'topRateTv':
         this.title = '高評價-影集'
-        this.getService.getTopRateTv().subscribe(res => {
+        this.getService.getTopRateTv(this.page).subscribe(res => {
+          this.total_pages = res.body.total_pages
+          this.apiData = this.apiData.concat(res.body.results)
+          if (event) {
+            event.target.complete();
+          }
+        })
+        break;
+      case 'badRateMovie':
+        this.title = '低評價-電影'
+        this.getService.getBadRate(this.page).subscribe(res => {
+          this.total_pages = res.body.total_pages
+          this.apiData = this.apiData.concat(res.body.results)
+          if (event) {
+            event.target.complete();
+          }
+        })
+        break;
+      case 'badRateTv':
+        this.title = '低評價-影集'
+        this.getService.getBadRateTv(this.page).subscribe(res => {
+          this.total_pages = res.body.total_pages
+          this.apiData = this.apiData.concat(res.body.results)
+          if (event) {
+            event.target.complete();
+          }
+        })
+        break;
+      case 'topRevenueMovie':
+        this.title = '收入排行-電影'
+        this.getService.getTopRevenue(this.page).subscribe(res => {
+          this.total_pages = res.body.total_pages
+          this.apiData = this.apiData.concat(res.body.results)
+          if (event) {
+            event.target.complete();
+          }
+        })
+        break;
+      case 'topRevenueTv':
+        this.title = '收入排行-影集'
+        this.getService.getTopRevenueTv(this.page).subscribe(res => {
+          this.total_pages = res.body.total_pages
+          this.apiData = this.apiData.concat(res.body.results)
+          if (event) {
+            event.target.complete();
+          }
+        })
+        break; case 'topVoteCountMovie':
+        this.title = '最多評價-電影'
+        this.getService.getVoteCount(this.page).subscribe(res => {
+          this.total_pages = res.body.total_pages
+          this.apiData = this.apiData.concat(res.body.results)
+          if (event) {
+            event.target.complete();
+          }
+        })
+        break;
+      case 'topVoteCountTv':
+        this.title = '最多評價-影集'
+        this.getService.getVoteCountTv(this.page).subscribe(res => {
           this.total_pages = res.body.total_pages
           this.apiData = this.apiData.concat(res.body.results)
           if (event) {

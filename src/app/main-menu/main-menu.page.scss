@@ -1,19 +1,30 @@
 ion-card-title{
+    color: #fff;
     font-size: 17px;
 }
 ion-card-subtitle{
+    color: #ccc;
+    font-weight: 100;
     margin-top: 5px;
     font-size: 12px;
 }
 ion-grid{
     padding:5px 0;
 }
+ion-icon{
+    font-size: 24px;
+    color: #77bdff;
+}
 ion-card{
+    background-color: rgba(88, 92, 107, 0.9);
     margin: 5px;
 }
+ion-card-header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
 .gary-area{
-    background-color: #f1efef;
-    margin: 10px 0;
     display: flex;
     justify-content: space-around;
 }

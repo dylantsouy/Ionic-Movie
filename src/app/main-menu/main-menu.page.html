@@ -11,10 +11,13 @@
       <ion-col size="12">
         <ion-card routerLink="/trending" [state]="{data: {type:'hotMovie',kind:'movie'}}">
           <ion-card-header>
-            <ion-card-title>
-              熱門電影
-            </ion-card-title>
-            <ion-card-subtitle>Find Hot Movies Here</ion-card-subtitle>
+            <div>
+              <ion-card-title>
+                熱門電影
+              </ion-card-title>
+              <ion-card-subtitle>Find Hot Movies Here</ion-card-subtitle>
+            </div>
+            <ion-icon name="flame-outline"></ion-icon>
           </ion-card-header>
         </ion-card>
       </ion-col>
@@ -23,76 +26,187 @@
       <ion-col size="12">
         <ion-card routerLink="/trending" [state]="{data: {type:'hotTv',kind:'tv'}}">
           <ion-card-header>
-            <ion-card-title>
-              熱門影集
-            </ion-card-title>
-            <ion-card-subtitle>Find Hot TV Shows Here</ion-card-subtitle>
+            <div>
+              <ion-card-title>
+                熱門影集
+              </ion-card-title>
+              <ion-card-subtitle>Find Hot TV Shows Here</ion-card-subtitle>
+            </div>
+            <ion-icon name="medal-outline"></ion-icon>
           </ion-card-header>
         </ion-card>
       </ion-col>
     </ion-row>
-    <div class="gary-area">
-      <p>Movies</p>
-      <p>TV Shows</p>
-    </div>
-    <ion-row>
+    <ion-toolbar>
+      <ion-segment value="all">
+        <ion-segment-button value="all" (click)="type = 'movie'">
+          Movies
+        </ion-segment-button>
+        <ion-segment-button value="favorites" (click)="type = 'tv'">
+          TV Shows 
+        </ion-segment-button>
+      </ion-segment>
+    </ion-toolbar>
+    <!-- movie -->
+    <ion-row *ngIf="type === 'movie'">
       <ion-col size="6">
         <ion-card routerLink="/trending" [state]="{data: {type:'upcomingMovie',kind:'movie'}}">
           <ion-card-header>
-            <ion-card-title>
-              即將上映
-            </ion-card-title>
-            <ion-card-subtitle>Movies</ion-card-subtitle>
+            <div>
+              <ion-card-title>
+                即將上映
+              </ion-card-title>
+              <ion-card-subtitle>Movies</ion-card-subtitle>
+            </div>
+            <ion-icon name="rocket-outline"></ion-icon>
           </ion-card-header>
         </ion-card>
       </ion-col>
-      <ion-col size="6">
-        <ion-card routerLink="/trending" [state]="{data: {type:'newReleaseTv',kind:'tv'}}">
-          <ion-card-header>
-            <ion-card-title>
-              近期更新
-            </ion-card-title>
-            <ion-card-subtitle>TV Shows</ion-card-subtitle>
-          </ion-card-header>
-        </ion-card>
-      </ion-col>
-      <ion-col size="6">
-        <ion-card routerLink="/trending" [state]="{data: {type:'topRateMovie',kind:'movie'}}">
-          <ion-card-header>
-            <ion-card-title>
-              高評價
-            </ion-card-title>
-            <ion-card-subtitle>Movies</ion-card-subtitle>
-          </ion-card-header>
-        </ion-card>
-      </ion-col>
-      <ion-col size="6">
-        <ion-card routerLink="/trending" [state]="{data: {type:'topRateTv',kind:'tv'}}">
-          <ion-card-header>
-            <ion-card-title>
-              高評價
-            </ion-card-title>
-            <ion-card-subtitle>TV Shows</ion-card-subtitle>
-          </ion-card-header>
-        </ion-card>
-      </ion-col>
+
       <ion-col size="6">
         <ion-card routerLink="/trending" [state]="{data: {type:'nowPlayingMovie',kind:'movie'}}">
           <ion-card-header>
-            <ion-card-title>
-              現正熱播
-            </ion-card-title>
-            <ion-card-subtitle>Movies</ion-card-subtitle>
+            <div>
+              <ion-card-title>
+                現正熱播
+              </ion-card-title>
+              <ion-card-subtitle>Movies</ion-card-subtitle>
+            </div>
+            <ion-icon name="play-forward-outline"></ion-icon>
+          </ion-card-header>
+        </ion-card>
+      </ion-col>
+
+      <ion-col size="6">
+        <ion-card routerLink="/trending" [state]="{data: {type:'topRateMovie',kind:'movie'}}">
+          <ion-card-header>
+            <div>
+              <ion-card-title>
+                高評價
+              </ion-card-title>
+              <ion-card-subtitle>Movies</ion-card-subtitle>
+            </div>
+            <ion-icon name="thumbs-up-outline"></ion-icon>
+          </ion-card-header>
+        </ion-card>
+      </ion-col>
+      <ion-col size="6">
+        <ion-card routerLink="/trending" [state]="{data: {type:'badRateMovie',kind:'movie'}}">
+          <ion-card-header>
+            <div>
+              <ion-card-title>
+                低評價
+              </ion-card-title>
+              <ion-card-subtitle>Movies</ion-card-subtitle>
+            </div>
+            <ion-icon name="thumbs-down-outline"></ion-icon>
+          </ion-card-header>
+        </ion-card>
+      </ion-col>
+      <ion-col size="6">
+        <ion-card routerLink="/trending" [state]="{data: {type:'topRevenueMovie',kind:'movie'}}">
+          <ion-card-header>
+            <div>
+              <ion-card-title>
+                收入排行
+              </ion-card-title>
+              <ion-card-subtitle>Movies</ion-card-subtitle>
+            </div>
+            <ion-icon name="cash-outline"></ion-icon>
+          </ion-card-header>
+        </ion-card>
+      </ion-col>
+      <ion-col size="6">
+        <ion-card routerLink="/trending" [state]="{data: {type:'topVoteCountMovie',kind:'movie'}}">
+          <ion-card-header>
+            <div>
+              <ion-card-title>
+                最多評價
+              </ion-card-title>
+              <ion-card-subtitle>Movies</ion-card-subtitle>
+            </div>
+            <ion-icon name="person-add-outline"></ion-icon>
+          </ion-card-header>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+    <!-- tv -->
+    <ion-row *ngIf="type === 'tv'">
+      <ion-col size="6">
+        <ion-card routerLink="/trending" [state]="{data: {type:'newReleaseTv',kind:'tv'}}">
+          <ion-card-header>
+            <div>
+              <ion-card-title>
+                近期更新
+              </ion-card-title>
+              <ion-card-subtitle>TV Shows</ion-card-subtitle>
+            </div>
+            <ion-icon name="cloud-upload-outline"></ion-icon>
           </ion-card-header>
         </ion-card>
       </ion-col>
       <ion-col size="6">
         <ion-card routerLink="/trending" [state]="{data: {type:'nowPlayingTv',kind:'tv'}}">
           <ion-card-header>
-            <ion-card-title>
-              現正熱播
-            </ion-card-title>
-            <ion-card-subtitle>TV Shows</ion-card-subtitle>
+            <div>
+              <ion-card-title>
+                現正熱播
+              </ion-card-title>
+              <ion-card-subtitle>TV Shows</ion-card-subtitle>
+            </div>
+            <ion-icon name="play-forward-outline"></ion-icon>
+          </ion-card-header>
+        </ion-card>
+      </ion-col>
+      <ion-col size="6">
+        <ion-card routerLink="/trending" [state]="{data: {type:'topRateTv',kind:'tv'}}">
+          <ion-card-header>
+            <div>
+              <ion-card-title>
+                高評價
+              </ion-card-title>
+              <ion-card-subtitle>TV Shows</ion-card-subtitle>
+            </div>
+            <ion-icon name="thumbs-up-outline"></ion-icon>
+          </ion-card-header>
+        </ion-card>
+      </ion-col>
+      <ion-col size="6">
+        <ion-card routerLink="/trending" [state]="{data: {type:'badRateMovie',kind:'tv'}}">
+          <ion-card-header>
+            <div>
+              <ion-card-title>
+                低評價
+              </ion-card-title>
+              <ion-card-subtitle>TV Shows</ion-card-subtitle>
+            </div>
+            <ion-icon name="thumbs-down-outline"></ion-icon>
+          </ion-card-header>
+        </ion-card>
+      </ion-col>
+      <ion-col size="6">
+        <ion-card routerLink="/trending" [state]="{data: {type:'topRevenueTv',kind:'tv'}}">
+          <ion-card-header>
+            <div>
+              <ion-card-title>
+                收入排行
+              </ion-card-title>
+              <ion-card-subtitle>Movies</ion-card-subtitle>
+            </div>
+            <ion-icon name="cash-outline"></ion-icon>
+          </ion-card-header>
+        </ion-card>
+      </ion-col>
+      <ion-col size="6">
+        <ion-card routerLink="/trending" [state]="{data: {type:'topVoteCountTv',kind:'tv'}}">
+          <ion-card-header>
+            <div>
+              <ion-card-title>
+                最多評價
+              </ion-card-title>
+              <ion-card-subtitle>Movies</ion-card-subtitle>
+            </div>
+            <ion-icon name="person-add-outline"></ion-icon>
           </ion-card-header>
         </ion-card>
       </ion-col>
